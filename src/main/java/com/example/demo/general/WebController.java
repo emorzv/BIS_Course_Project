@@ -13,4 +13,18 @@ public class WebController {
     public String searchByProductCipher() {
         return "searchByProductCipher";
     }
+    @RequestMapping(value = "/searchDeliveryByProduct")
+    public String searchDeliveryByProduct() {
+        return "searchDeliveryByProduct";
+    }
+
+    @RequestMapping(value = "/addDeliveryForm")
+    public String addDeliveryForm() {
+        return "addDeliveryForm";
+    }
+
+    @RequestMapping(value = "/deliveryConfirmation")
+    public String deliveryConfirmation() {
+        return "deliveryConfirmation";
+    }
 }

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alcohols</title>
+</head>
+<body>
+<h1>List of Delivery</h1>
+<ul id="deliveryList"></ul>
+
+<script th:inline="javascript">
+    /*<![CDATA[*/
+    var deliveries = /*[[${deliveries}]]*/ [];
+    /*]]>*/
+
+    console.log(deliveries);
+    deliveries.forEach(function(delivery) {
+        var listItem = document.createElement('li');
+        listItem.textContent = 'supplierId: ' + delivery.supplierId + ', productId: ' + delivery.productId;
+        document.getElementById('deliveryList').appendChild(listItem);
+    });
+</script>
+</body>
+</html>
