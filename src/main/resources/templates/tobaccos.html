@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alcohols</title>
+</head>
+<body>
+<h1>List of Tobaccos</h1>
+<ul id="tobaccoList"></ul>
+
+<script th:inline="javascript">
+    /*<![CDATA[*/
+    var tobaccos = /*[[${tobaccos}]]*/ [];
+    /*]]>*/
+
+    console.log(tobaccos);
+    tobaccos.forEach(function(tobacco) {
+        var listItem = document.createElement('li');
+        listItem.textContent = 'Brand: ' + tobacco.brand + ', Cipher: ' + tobacco.cipher;
+        document.getElementById('tobaccoList').appendChild(listItem);
+    });
+</script>
+</body>
+</html>

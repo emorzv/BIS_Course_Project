@@ -1,19 +1,19 @@
-package com.example.demo.alcohol;
+package com.example.demo.tobacco;
 
 import jakarta.persistence.*;
 
 @Entity
 @Table
-public class Alcohol {
+public class Tobacco {
     @Id
     @SequenceGenerator(
-            name = "alcohol_sequence",
-            sequenceName = "alcohol_sequence",
+            name = "tobacco_sequence",
+            sequenceName = "tobacco_sequence",
             allocationSize = 1
     )
     @GeneratedValue(
             strategy = GenerationType.SEQUENCE,
-            generator = "alcohol_sequence"
+            generator = "tobacco_sequence"
     )
     private Long productID;
     private String cipher;
@@ -21,40 +21,30 @@ public class Alcohol {
     private double price;
     private String description;
     private int supplierID;
-    private double volume;
+    private String type;
 
-
-    // Constructor
-
-    public Alcohol() {
-    }
-
-    public Alcohol(Long productID, String cipher, String brand, double price, String description, int supplierID, double volume) {
+    public Tobacco(Long productID, String cipher, String brand, double price, String description, int supplierID, String type) {
         this.productID = productID;
         this.cipher = cipher;
         this.brand = brand;
         this.price = price;
         this.description = description;
         this.supplierID = supplierID;
-        this.volume = volume;
+        this.type = type;
     }
 
-    public Alcohol(String cipher, String brand, double price, String description, int supplierID, double volume) {
+    public Tobacco(String cipher, String brand, double price, String description, int supplierID, String type) {
         this.cipher = cipher;
         this.brand = brand;
         this.price = price;
         this.description = description;
         this.supplierID = supplierID;
-        this.volume = volume;
+        this.type = type;
     }
 
-    public double getVolume() {
-        return volume;
+    public Tobacco() {
     }
 
-    public void setVolume(double volume) {
-        this.volume = volume;
-    }
     public Long getProductID() {
         return productID;
     }
@@ -101,5 +91,13 @@ public class Alcohol {
 
     public void setSupplierID(int supplierID) {
         this.supplierID = supplierID;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 }

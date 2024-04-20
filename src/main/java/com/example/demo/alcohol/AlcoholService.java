@@ -1,36 +1,39 @@
 package com.example.demo.alcohol;
 
+import com.example.demo.general.Product;
+import com.example.demo.general.ProductType;
+import jakarta.persistence.Access;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class AlcoholService {
-    public Alcohol searchByCipher(String cipher) {
-        String sql = "SELECT * FROM Alcohol WHERE Cipher = ?";
-        Alcohol alcohol = null;
+    private final AlcoholRepository alcoholRepository;
+    @Autowired
+    public AlcoholService(AlcoholRepository alcoholRepository) {
+        this.alcoholRepository = alcoholRepository; 
+    }
 
-        try (Connection conn = getConnection();
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
-            stmt.setString(1, cipher);
-            try (ResultSet rs = stmt.executeQuery()) {
-                if (rs.next()) {
-                    alcohol = new Alcohol(
-                            rs.getInt("AlcoholID"),
-                            rs.getString("Cipher"),
-                            rs.getString("Name"),
-                            rs.getString("Type"),
-                            rs.getString("Brand"),
-                            rs.getDouble("Volume"),
-                            rs.getDouble("Price"),
-                            rs.getInt("StockQuantity"),
-                            rs.getString("Description"),
-                            rs.getInt("SupplierID")
-                    );
-                }
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
+    public Product searchByCipher(String cipher) {
+        String sql = "SELECT * FROM Alcohol WHERE Cipher = ?";
+        System.out.println("Searching for alcohol with cipher: " + cipher);
+        List<Alcohol> alcohol = null;
+        try {
+            alcohol = alcoholRepository.findByCipher(cipher);
+        } catch (Exception e) {
+            System.out.println("Error: " + e);
         }
 
-        return alcohol;
+        Product product = new Product();
+        product.setProductType(ProductType.ALCOHOL);
+        product.setAlcoholList(alcohol);
+
+        return product;
     }
+
+
+
+
 }
