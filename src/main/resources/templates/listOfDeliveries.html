@@ -4,22 +4,109 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Alcohols</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+
+        .top-bar {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            display: flex; /* Use flexbox for layout */
+            justify-content: space-between; /* Align items to the start and end of the flex container */
+            align-items: center; /* Center items vertically */
+        }
+
+        .top-bar .company-name {
+            flex-grow: 1; /* Allow the company name to grow and take up remaining space */
+            text-align: center; /* Align the company name to the left */
+        }
+
+        .top-bar button {
+            background-color: transparent;
+            border: none;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .top-bar button:hover {
+            color: #ccc;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        li {
+            background-color: #fff;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        script {
+            display: none; /* Hide script tags to prevent them from being visible on the page */
+        }
+    </style>
 </head>
 <body>
-<h1>List of Delivery</h1>
+<!-- Top bar with company name and button -->
+<div class="top-bar">
+    <button onclick="goToIndex()">Home</button> <!-- Button to return to index -->
+    <span class="company-name">Premium Alcohol and Tobacco</span> <!-- Company name -->
+</div>
+
+<h1>List of Deliveries</h1>
 <ul id="deliveryList"></ul>
 
 <script th:inline="javascript">
     /*<![CDATA[*/
     var deliveries = /*[[${deliveries}]]*/ [];
-    /*]]>*/
+    var products = /*[[${products}]]*/ [];
 
-    console.log(deliveries);
     deliveries.forEach(function(delivery) {
         var listItem = document.createElement('li');
-        listItem.textContent = 'supplierId: ' + delivery.supplierId + ', productId: ' + delivery.productId;
+        listItem.textContent = 'Supplier ID: ' + delivery.supplierId +
+                                ', Product ID: ' + delivery.productId +
+                                ', Quantity: ' + delivery.quantity +
+                                ', Name: ' + getBrandByTypeAndID(products, delivery.productId);
         document.getElementById('deliveryList').appendChild(listItem);
     });
+
+    function getBrandByTypeAndID(products, productID) {
+        var brand = null;
+        var type = products.productType;
+        if (type === "ALCOHOL" && products.alcoholList) {
+            var alcohol = products.alcoholList.find(item => item.productID === productID);
+            if (alcohol) {
+                brand = alcohol.brand;
+            }
+        } else if (type === "TOBACCO" && products.tobaccoList) {
+            // Access tobacco list here
+        } else if (type === "SODA" && products.sodaList) {
+            // Access soda list here
+        }
+        return brand;
+    }
+
+    function goToIndex() {
+        window.location.href = "/"; // Change "/index" to your index page URL
+    }
+    /*]]>*/
 </script>
 </body>
 </html>

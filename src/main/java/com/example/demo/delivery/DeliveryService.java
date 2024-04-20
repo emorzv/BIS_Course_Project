@@ -3,6 +3,7 @@ package com.example.demo.delivery;
 import com.example.demo.alcohol.Alcohol;
 import com.example.demo.general.Product;
 import com.example.demo.general.ProductType;
+import com.example.demo.tobacco.Tobacco;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -30,12 +31,23 @@ private final DeliveryRepository deliveryRepository;
                 allDeliveries.addAll(deliveriesForProduct);
             }
         }
+        if (products.getProductType().equals(ProductType.TOBACCO)) {
+
+            for (Tobacco product : products.getTobaccoList()) {
+                List<Delivery> deliveriesForProduct = deliveryRepository.findByProductId(product.getProductID());
+                allDeliveries.addAll(deliveriesForProduct);
+            }
+        }
 
         return allDeliveries;
     }
 
-    public void addDelivery(Long supplierId, Long productId, Long quantity) {
+    public boolean addDelivery(Long supplierId, Long productId, Long quantity) {
         Delivery delivery = new Delivery(supplierId, productId, quantity);
-        deliveryRepository.save(delivery);
+
+        if (deliveryRepository.save(delivery) == null) {
+            return false;
+        }
+        return true;
     }
 }

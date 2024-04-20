@@ -20,7 +20,7 @@ public class AlcoholConfig {
                     0.7
                     );
 
-            Alcohol bear = new Alcohol(
+            Alcohol heineken = new Alcohol(
                     "ABL",
                     "Heineken",
                     2.0,
@@ -44,8 +44,16 @@ public class AlcoholConfig {
                     3,
                     1.0
             );
+            Alcohol kamenitza = new Alcohol(
+                    "ABL",
+                    "Kamenitza",
+                    2.0,
+                    "Beer Light",
+                    1,
+                    0.5
+            );
             repository.saveAll(
-                    List.of(vodka, bear, wine, wiskey)
+                    List.of(vodka, heineken, wine, wiskey, kamenitza)
             );
 
         };

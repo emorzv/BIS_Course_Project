@@ -4,8 +4,67 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Alcohols</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa; /* Set background color */
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 30px;
+            color: #343a40; /* Set heading color */
+        }
+
+        ul {
+            list-style-type: none; /* Remove list bullets */
+            padding: 0;
+            margin: 0;
+        }
+
+        li {
+            background-color: #fff; /* Set background color for list items */
+            padding: 15px 20px; /* Add padding */
+            margin-bottom: 10px; /* Add margin between list items */
+            border-radius: 8px; /* Add border radius */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add box shadow */
+        }
+        .top-bar {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            display: flex; /* Use flexbox for layout */
+            justify-content: space-between; /* Align items to the start and end of the flex container */
+            align-items: center; /* Center items vertically */
+        }
+
+        .top-bar .company-name {
+            flex-grow: 1; /* Allow the company name to grow and take up remaining space */
+            text-align: center; /* Align the company name to the left */
+        }
+
+        .top-bar button {
+            background-color: transparent;
+            border: none;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .top-bar button:hover {
+            color: #ccc;
+        }
+
+    </style>
 </head>
 <body>
+<div class="top-bar">
+    <button onclick="goToIndex()">Home</button> <!-- Button to return to index -->
+    <span class="company-name">Premium Alcohol and Tobacco</span> <!-- Company name -->
+</div>
 <h1>List of Tobaccos</h1>
 <ul id="tobaccoList"></ul>
 
@@ -20,6 +79,9 @@
         listItem.textContent = 'Brand: ' + tobacco.brand + ', Cipher: ' + tobacco.cipher;
         document.getElementById('tobaccoList').appendChild(listItem);
     });
+    function goToIndex() {
+        window.location.href = "/"; // Change "/index" to your index page URL
+    }
 </script>
 </body>
 </html>

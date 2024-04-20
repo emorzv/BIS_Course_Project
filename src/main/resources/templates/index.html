@@ -3,22 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>List of Buttons</title>
+    <title>Home</title>
     <style>
+        body {
+            font-family: Arial, sans-serif; /* Setting a fallback font for better cross-browser consistency */
+            margin: 0; /* Remove default margin */
+            padding: 0; /* Remove default padding */
+        }
+        .top-bar {
+            background-color: #333; /* Set background color for top bar */
+            color: #fff; /* Set text color for top bar */
+            padding: 10px; /* Add padding to top bar */
+            text-align: center; /* Center align text in top bar */
+        }
+        h1 {
+            text-align: center; /* Center align the heading */
+        }
         ul {
             list-style-type: none; /* Removes the default list style */
             padding: 0; /* Removes default padding */
+            text-align: center; /* Center align list items */
+        }
+        li {
+            margin-bottom: 10px; /* Add some space between list items */
+        }
+        button {
+            padding: 10px 0; /* Add padding to buttons */
+            width: 200px; /* Set fixed width for buttons */
+            font-size: 16px; /* Increase font size for better readability */
+            border: none; /* Remove default button border */
+            background-color: #007bff; /* Set button background color */
+            color: #fff; /* Set button text color */
+            cursor: pointer; /* Change cursor to pointer on hover */
+            border-radius: 5px; /* Add border radius for rounded corners */
+            transition: background-color 0.3s; /* Add smooth transition for background color */
+        }
+        button:hover {
+            background-color: #0056b3; /* Darken background color on hover */
         }
     </style>
 </head>
 <body>
-<h1>List of Buttons</h1>
+<div class="top-bar">
+    Premium Alcohol and Tobacco
+</div>
+<h1>Choose Action</h1>
 <ul>
-    <li><a href="searchByProductCipher"><button id="button1">Search By Cipher</button></li>
-    <li><a href="addDeliveryForm"><button id="button2">Add Delivery</button></li>
-    <li><button id="button3">Button 3</button></li>
-    <li><button id="button4">Button 4</button></li>
-    <li><button id="button5">Button 5</button></li>
+    <li><a href="searchByProductCipher"><button id="button1">Search Products By Cipher</button></a></li>
+    <li><a href="searchDeliveryByProduct"><button id="button2">Search Delivery By Cipher</button></a></li>
+    <li><a href="addDeliveryForm"><button id="button3">Add Delivery</button></a></li>
+    <li><button id="button4">Button 3</button></li>
+    <li><button id="button5">Button 4</button></li>
+    <li><button id="button6">Button 5</button></li>
 </ul>
 </body>
 </html>

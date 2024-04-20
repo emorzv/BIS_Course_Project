@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
 
@@ -21,18 +22,30 @@ public class DeliveryController {
         this.deliveryService = deliveryService;
     }
 
+
     @PostMapping("/addDelivery")
     public String addDelivery(
             @RequestParam("supplierId") Long supplierId,
             @RequestParam("productId") Long productId,
-            @RequestParam("quantity") Long quantity) {
+            @RequestParam("quantity") Long quantity,
+            RedirectAttributes redirectAttributes,
+            Model model) {
 
         // Create and save the new delivery
-        deliveryService.addDelivery(supplierId, productId, quantity);
+        boolean isSuccess = deliveryService.addDelivery(supplierId, productId, quantity);
 
-        // Redirect to a confirmation page or any other appropriate page
-        return "redirect:/deliveryConfirmation";
+        if (isSuccess) {
+            // Add a flash attribute to indicate that delivery was added
+            redirectAttributes.addFlashAttribute("deliveryAdded", true);
+        } else {
+            // If delivery was not added successfully, add an error message to the model
+            model.addAttribute("errorMessage", "Error occurred while adding delivery");
+        }
+
+        // Redirect to the same page
+        return "redirect:/addDeliveryForm";
     }
+
 
     public void deleteDelivery(Long deliveryId) {
         deliveryService.deleteDelivery(deliveryId);
@@ -42,6 +55,7 @@ public class DeliveryController {
     public String getDelqiveriesForProducts(@RequestParam String cipher, Model model) {
         Product products = this.productService.searchByCipher(cipher);
         model.addAttribute("deliveries", deliveryService.getDeliveriesForProducts(products));
+        model.addAttribute("products", products);
 
         return "listOfDeliveries";
     }
