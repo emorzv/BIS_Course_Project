@@ -96,9 +96,15 @@
                 brand = alcohol.brand;
             }
         } else if (type === "TOBACCO" && products.tobaccoList) {
-            // Access tobacco list here
+            var tobacco = products.tobaccoList.find(item => item.productID === productID);
+            if (tobacco) {
+                brand = tobacco.brand;
+            }
         } else if (type === "SODA" && products.sodaList) {
-            // Access soda list here
+            var soda = products.sodaList.find(item => item.productID === productID);
+            if (soda) {
+                brand = soda.brand;
+            }
         }
         return brand;
     }

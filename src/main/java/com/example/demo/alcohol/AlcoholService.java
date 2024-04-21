@@ -21,7 +21,7 @@ public class AlcoholService {
         System.out.println("Searching for alcohol with cipher: " + cipher);
         List<Alcohol> alcohol = null;
         try {
-            alcohol = alcoholRepository.findByCipher(cipher);
+            alcohol = alcoholRepository.findByCipherContaining(cipher);
         } catch (Exception e) {
             System.out.println("Error: " + e);
         }

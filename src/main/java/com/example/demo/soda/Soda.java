@@ -1,12 +1,12 @@
-package com.example.demo.tobacco;
+package com.example.demo.soda;
 
 import com.example.demo.alcohol.AlcoholEntityListener;
 import jakarta.persistence.*;
 
 @Entity
 @Table
-@EntityListeners(TobaccoEntityListener.class)
-public class Tobacco {
+@EntityListeners(SodaEntityListener.class)
+public class Soda {
     @Id
     @SequenceGenerator(
             name = "tobacco_sequence",
@@ -24,28 +24,36 @@ public class Tobacco {
     private double price;
     private String description;
     private int supplierID;
-    private String type;
+    private double volume;
 
-    public Tobacco(Long productID, String cipher, String brand, double price, String description, int supplierID, String type) {
+    public Soda() {
+    }
+
+    public Soda(Long productID, String cipher, String brand, double price, String description, int supplierID, double volume) {
         this.productID = productID;
         this.cipher = cipher;
         this.brand = brand;
         this.price = price;
         this.description = description;
         this.supplierID = supplierID;
-        this.type = type;
+        this.volume = volume;
     }
 
-    public Tobacco(String cipher, String brand, double price, String description, int supplierID, String type) {
+    public Soda(String cipher, String brand, double price, String description, int supplierID, double volume) {
         this.cipher = cipher;
         this.brand = brand;
         this.price = price;
         this.description = description;
         this.supplierID = supplierID;
-        this.type = type;
+        this.volume = volume;
     }
 
-    public Tobacco() {
+    public double getVolume() {
+        return volume;
+    }
+
+    public void setVolume(double volume) {
+        this.volume = volume;
     }
 
     public Long getProductID() {
@@ -96,11 +104,4 @@ public class Tobacco {
         this.supplierID = supplierID;
     }
 
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
 }

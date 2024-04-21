@@ -23,7 +23,7 @@ public class TobaccoService {
         System.out.println("Searching for tobacco with cipher: " + cipher);
         List<Tobacco> tobacco = null;
         try {
-            tobacco = tobaccoRepository.findByCipher(cipher);
+            tobacco = tobaccoRepository.findByCipherContaining(cipher);
         } catch (Exception e) {
             System.out.println("Error: " + e);
         }

@@ -1,6 +1,8 @@
 package com.example.demo.general;
 
 import com.example.demo.alcohol.Alcohol;
+import com.example.demo.soda.Soda;
+import com.example.demo.soda.SodaRepository;
 import com.example.demo.tobacco.Tobacco;
 
 import java.util.List;
@@ -12,8 +14,8 @@ public class Product {
     private List<Alcohol> alcoholList;
 
     private List<Tobacco> tobaccoList;
-    // TODO: add soda
 
+    private List<Soda> sodaList;
 
     public ProductType getProductType() {
         return productType;
@@ -38,4 +40,13 @@ public class Product {
     public void setTobaccoList(List<Tobacco> tobaccoList) {
         this.tobaccoList = tobaccoList;
     }
+
+    public List<Soda> getSodaList() {
+        return sodaList;
+    }
+
+    public void setSodaList(List<Soda> sodaList) {
+        this.sodaList = sodaList;
+    }
+
 }

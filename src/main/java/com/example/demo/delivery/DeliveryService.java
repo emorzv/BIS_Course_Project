@@ -42,6 +42,8 @@ private final DeliveryRepository deliveryRepository;
         return allDeliveries;
     }
 
+
+    // TODO: Delivery should specify the product type
     public boolean addDelivery(Long supplierId, Long productId, Long quantity) {
         Delivery delivery = new Delivery(supplierId, productId, quantity);
 

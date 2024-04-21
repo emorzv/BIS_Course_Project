@@ -7,5 +7,7 @@ import java.util.List;
 
 @Repository
 public interface TobaccoRepository extends JpaRepository<Tobacco, Long> {
-    List<Tobacco> findByCipher(String cipher);
+    List<Tobacco> findByCipherContaining(String cipher);
+
+    int countByCipherStartingWith(String baseCipher);
 }
