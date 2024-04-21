@@ -44,6 +44,13 @@ private final DeliveryRepository deliveryRepository;
 
 
     // TODO: Delivery should specify the product type
+
+    //TODO: Validate that the supplier exists
+
+    //TODO: Validate that the product exists
+
+    //TODO: Is this enough to add a delivery?
+
     public boolean addDelivery(Long supplierId, Long productId, Long quantity) {
         Delivery delivery = new Delivery(supplierId, productId, quantity);
 
