@@ -1,4 +1,4 @@
-package com.example.demo.soda;
+package com.example.demo.products.tobacco;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
@@ -6,8 +6,8 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface SodaRepository extends JpaRepository<Soda, Long> {
-    List<Soda> findByCipherContaining(String cipher);
+public interface TobaccoRepository extends JpaRepository<Tobacco, Long> {
+    List<Tobacco> findByCipherContaining(String cipher);
 
     int countByCipherStartingWith(String baseCipher);
 }

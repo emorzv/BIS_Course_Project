@@ -1,9 +1,8 @@
 package com.example.demo.general;
 
-import com.example.demo.alcohol.Alcohol;
-import com.example.demo.soda.Soda;
-import com.example.demo.soda.SodaRepository;
-import com.example.demo.tobacco.Tobacco;
+import com.example.demo.products.alcohol.Alcohol;
+import com.example.demo.products.soda.Soda;
+import com.example.demo.products.tobacco.Tobacco;
 
 import java.util.List;
 

@@ -1,7 +1,5 @@
-package com.example.demo.tobacco;
+package com.example.demo.products.tobacco;
 
-import com.example.demo.alcohol.Alcohol;
-import com.example.demo.alcohol.AlcoholRepository;
 import com.example.demo.general.Product;
 import com.example.demo.general.ProductType;
 import org.springframework.beans.factory.annotation.Autowired;

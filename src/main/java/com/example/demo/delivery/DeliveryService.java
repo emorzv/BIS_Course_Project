@@ -1,9 +1,9 @@
 package com.example.demo.delivery;
 
-import com.example.demo.alcohol.Alcohol;
+import com.example.demo.products.alcohol.Alcohol;
 import com.example.demo.general.Product;
 import com.example.demo.general.ProductType;
-import com.example.demo.tobacco.Tobacco;
+import com.example.demo.products.tobacco.Tobacco;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

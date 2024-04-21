@@ -1,4 +1,4 @@
-package com.example.demo.soda;
+package com.example.demo.products.soda;
 
 public class SodaEntityListener {
     private static SodaRepository sodaRepository;

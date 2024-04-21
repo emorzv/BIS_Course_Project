@@ -1,6 +1,5 @@
-package com.example.demo.soda;
+package com.example.demo.products.soda;
 
-import com.example.demo.alcohol.AlcoholEntityListener;
 import jakarta.persistence.*;
 
 @Entity
@@ -9,13 +8,13 @@ import jakarta.persistence.*;
 public class Soda {
     @Id
     @SequenceGenerator(
-            name = "tobacco_sequence",
-            sequenceName = "tobacco_sequence",
+            name = "soda_sequence",
+            sequenceName = "soda_sequence",
             allocationSize = 1
     )
     @GeneratedValue(
             strategy = GenerationType.SEQUENCE,
-            generator = "tobacco_sequence"
+            generator = "soda_sequence"
     )
     private Long productID;
     @Column(unique = true)

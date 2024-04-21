@@ -1,4 +1,4 @@
-package com.example.demo.alcohol;
+package com.example.demo.products.alcohol;
 
 
 import jakarta.persistence.*;

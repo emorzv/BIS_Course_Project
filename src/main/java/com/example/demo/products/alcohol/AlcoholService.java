@@ -1,8 +1,7 @@
-package com.example.demo.alcohol;
+package com.example.demo.products.alcohol;
 
 import com.example.demo.general.Product;
 import com.example.demo.general.ProductType;
-import jakarta.persistence.Access;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

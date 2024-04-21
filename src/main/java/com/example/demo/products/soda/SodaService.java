@@ -1,8 +1,7 @@
-package com.example.demo.soda;
+package com.example.demo.products.soda;
 
 import com.example.demo.general.Product;
 import com.example.demo.general.ProductType;
-import com.example.demo.tobacco.Tobacco;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

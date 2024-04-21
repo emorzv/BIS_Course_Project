@@ -1,6 +1,5 @@
-package com.example.demo.tobacco;
+package com.example.demo.products.tobacco;
 
-import com.example.demo.alcohol.AlcoholEntityListener;
 import jakarta.persistence.*;
 
 @Entity

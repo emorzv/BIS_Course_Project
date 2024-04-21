@@ -1,6 +1,5 @@
-package com.example.demo.tobacco;
+package com.example.demo.products.tobacco;
 
-import com.example.demo.alcohol.AlcoholRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
