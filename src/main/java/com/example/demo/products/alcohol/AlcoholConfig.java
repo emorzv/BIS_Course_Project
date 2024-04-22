@@ -11,49 +11,124 @@ public class AlcoholConfig {
     @Bean
     CommandLineRunner commandLineRunnerAlcohol(AlcoholRepository repository) {
         return args -> {
-            Alcohol vodka = new Alcohol(
-                    "AH",
-                    "Savoy",
-                    10.0,
-                    "Vodka",
-                    1,
+            Alcohol ABH = new Alcohol(
+                    "ABH",
+                    "Heineken",
+                    2.5,
+                    "Beer",
+                    "DAB",
                     0.7
                     );
 
-            Alcohol heineken = new Alcohol(
-                    "ABL",
-                    "Heineken",
+            Alcohol ABA = new Alcohol(
+                    "ABA",
+                    "Ariana",
                     2.0,
                     "Beer Light",
-                    2,
+                    "DAB",
                     0.5
             );
-            Alcohol wine = new Alcohol(
+            Alcohol ABP = new Alcohol(
+                    "ABP",
+                    "Pirinsko",
+                    2.0,
+                    "Beer Light",
+                    "DAB",
+                    0.5
+            );
+            Alcohol ABT = new Alcohol(
+                    "ABT",
+                    "Tuborg",
+                    2.0,
+                    "Beer Light",
+                    "DAB",
+                    0.5
+            );
+            Alcohol ABK = new Alcohol(
+                    "ABK",
+                    "Kamenitza",
+                    2.0,
+                    "Beer Light",
+                    "DAB",
+                    0.5
+            );
+
+            Alcohol AWO = new Alcohol(
                     "AWO",
                     "Bratanov",
                     30.0,
                     "Wine Red",
-                    1,
+                    "DAE",
                     3.0
             );
-            Alcohol wiskey = new Alcohol(
-                    "AH",
+            Alcohol AWE = new Alcohol(
+                    "AWE",
                     "Bratanov",
                     30.0,
                     "Wine Red",
-                    3,
+                    "DAE",
+                    3.0
+            );
+            Alcohol AWW = new Alcohol(
+                    "AWW",
+                    "Bratanov",
+                    30.0,
+                    "Wine Red",
+                    "DAE",
+                    3.0
+            );
+
+            Alcohol AHWW = new Alcohol(
+                    "AHWW",
+                    "JohnyWalker",
+                    30.0,
+                    "Wine Red",
+                    "DAW",
                     1.0
             );
-            Alcohol kamenitza = new Alcohol(
-                    "ABL",
-                    "Kamenitza",
-                    2.0,
-                    "Beer Light",
-                    1,
-                    0.5
+            Alcohol AHWD = new Alcohol(
+                    "AHWD",
+                    "JackDaniels",
+                    30.0,
+                    "Wine Red",
+                    "DAW",
+                    1.0
+            );
+            Alcohol AHWB = new Alcohol(
+                    "AHWB",
+                    "JimBeam",
+                    30.0,
+                    "Wine Red",
+                    "DAW",
+                    1.0
+            );
+
+            Alcohol AHVB = new Alcohol(
+                    "AHVB",
+                    "Beluga",
+                    30.0,
+                    "Wine Red",
+                    "DAV",
+                    1.0
+            );
+            Alcohol AHVG = new Alcohol(
+                    "AHWG",
+                    "Goose",
+                    30.0,
+                    "Wine Red",
+                    "DAV",
+                    1.0
+            );
+            Alcohol AHVC = new Alcohol(
+                    "AHVC",
+                    "Ciroc",
+                    30.0,
+                    "Wine Red",
+                    "DAV",
+                    1.0
             );
             repository.saveAll(
-                    List.of(vodka, heineken, wine, wiskey, kamenitza)
+                    List.of(ABH, ABA, ABP, ABT, ABK, AWO, AWE, AWW, AHWW, AHWD, AHWB, AHVB, AHVG, AHVC)
             );
 
         };

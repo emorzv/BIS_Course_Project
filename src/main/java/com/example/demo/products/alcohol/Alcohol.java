@@ -1,10 +1,12 @@
 package com.example.demo.products.alcohol;
 
+import com.example.demo.inventory.Inventory;
 import jakarta.persistence.*;
+
+import static jakarta.persistence.CascadeType.ALL;
 
 @Entity
 @Table
-@EntityListeners(AlcoholEntityListener.class)
 public class Alcohol {
     @Id
     @SequenceGenerator(
@@ -17,36 +19,37 @@ public class Alcohol {
             generator = "alcohol_sequence"
     )
     private Long productID;
-    @Column(unique = true)
     private String cipher;
     private String brand;
     private double price;
     private String description;
-    private int supplierID;
+    private String supplierCipher;
     private double volume;
 
+    @OneToOne(cascade = ALL, mappedBy="alcohol")
+    private Inventory inventory;
 
     // Constructor
 
     public Alcohol() {
     }
 
-    public Alcohol(Long productID, String cipher, String brand, double price, String description, int supplierID, double volume) {
+    public Alcohol(Long productID, String cipher, String brand, double price, String description, String supplierCipher, double volume) {
         this.productID = productID;
         this.cipher = cipher;
         this.brand = brand;
         this.price = price;
         this.description = description;
-        this.supplierID = supplierID;
+        this.supplierCipher = supplierCipher;
         this.volume = volume;
     }
 
-    public Alcohol(String cipher, String brand, double price, String description, int supplierID, double volume) {
+    public Alcohol(String cipher, String brand, double price, String description, String supplierCipher, double volume) {
         this.cipher = cipher;
         this.brand = brand;
         this.price = price;
         this.description = description;
-        this.supplierID = supplierID;
+        this.supplierCipher = supplierCipher;
         this.volume = volume;
     }
 
@@ -97,11 +100,11 @@ public class Alcohol {
         this.description = description;
     }
 
-    public int getSupplierID() {
-        return supplierID;
+    public String getSupplierCipher() {
+        return supplierCipher;
     }
 
-    public void setSupplierID(int supplierID) {
-        this.supplierID = supplierID;
+    public void setSupplierCipher(String supplierCipher) {
+        this.supplierCipher = supplierCipher;
     }
 }

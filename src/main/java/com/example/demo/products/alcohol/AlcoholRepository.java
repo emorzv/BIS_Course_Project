@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface AlcoholRepository  extends JpaRepository<Alcohol, Long> {
+public interface AlcoholRepository extends JpaRepository<Alcohol, Long> {
     List<Alcohol> findByCipherContaining(String cipher);
     int countByCipherStartingWith(String baseCipher);
 }

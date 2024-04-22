@@ -16,40 +16,41 @@ public class Delivery {
             generator = "delivery_sequence"
     )
     private Long deliveryId;
-    private Long supplierId;
-    private Long productId;
+    private String supplierCipher;
+    // This can be changed to cipher
+    private String productCipher;
     private Long quantity;
 
     public Delivery() {
     }
 
-    public Delivery(Long deliveryId, Long supplierId, Long productId, Long quantity) {
+    public Delivery(Long deliveryId, String supplierCipher, String productCipher, Long quantity) {
         this.deliveryId = deliveryId;
-        this.supplierId = supplierId;
-        this.productId = productId;
+        this.supplierCipher = supplierCipher;
+        this.productCipher = productCipher;
         this.quantity = quantity;
     }
 
-    public Delivery(Long supplierId, Long productId, Long quantity) {
-        this.supplierId = supplierId;
-        this.productId = productId;
+    public Delivery(String supplierCipher, String productCipher, Long quantity) {
+        this.supplierCipher = supplierCipher;
+        this.productCipher = productCipher;
         this.quantity = quantity;
     }
 
-    public Long getSupplierId() {
-        return supplierId;
+    public String getSupplierCipher() {
+        return supplierCipher;
     }
 
-    public void setSupplierId(Long supplierId) {
-        this.supplierId = supplierId;
+    public void setSupplierCipher(String supplierCipher) {
+        this.supplierCipher = supplierCipher;
     }
 
-    public Long getProductId() {
-        return productId;
+    public String getProductCipher() {
+        return productCipher;
     }
 
-    public void setProductId(Long productId) {
-        this.productId = productId;
+    public void setProductCipher(String productCipher) {
+        this.productCipher = productCipher;
     }
 
     public Long getQuantity() {

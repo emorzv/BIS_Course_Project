@@ -1,7 +1,5 @@
 package com.example.demo.supplier;
 
-import com.example.demo.products.alcohol.AlcoholEntityListener;
-import com.example.demo.products.alcohol.AlcoholRepository;
 import jakarta.persistence.PrePersist;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

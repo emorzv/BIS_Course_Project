@@ -1,7 +1,7 @@
-package com.example.demo.general;
+package com.example.demo.delivery;
 
-import com.example.demo.delivery.Delivery;
-import com.example.demo.delivery.DeliveryService;
+import com.example.demo.inventory.Inventory;
+import com.example.demo.inventory.InventoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,24 +15,24 @@ import java.util.List;
 @Controller
 public class DeliveryController {
     private final DeliveryService deliveryService;
-    private final ProductService productService;
+    private final InventoryService inventoryService;
     @Autowired
-    public DeliveryController(ProductService productService, DeliveryService deliveryService) {
-        this.productService = productService;
+    public DeliveryController(InventoryService inventoryService, DeliveryService deliveryService) {
+        this.inventoryService = inventoryService;
         this.deliveryService = deliveryService;
     }
 
 
     @PostMapping("/addDelivery")
     public String addDelivery(
-            @RequestParam("supplierId") Long supplierId,
-            @RequestParam("productId") Long productId,
+            @RequestParam("supplierCipher") String supplierCipher,
+            @RequestParam("productCipher") String productCipher,
             @RequestParam("quantity") Long quantity,
             RedirectAttributes redirectAttributes,
             Model model) {
 
         // Create and save the new delivery
-        boolean isSuccess = deliveryService.addDelivery(supplierId, productId, quantity);
+        boolean isSuccess = deliveryService.addDelivery(supplierCipher, productCipher, quantity);
 
         if (isSuccess) {
             // Add a flash attribute to indicate that delivery was added
@@ -51,12 +51,12 @@ public class DeliveryController {
         deliveryService.deleteDelivery(deliveryId);
     }
 
-    @GetMapping(path = "/search/deliveries")
-    public String getDelqiveriesForProducts(@RequestParam String cipher, Model model) {
-        Product products = this.productService.searchByCipher(cipher);
-        model.addAttribute("deliveries", deliveryService.getDeliveriesForProducts(products));
-        model.addAttribute("products", products);
-
-        return "listOfDeliveries";
-    }
+//    @GetMapping(path = "/search/deliveries")
+//    public String getDeliveriesForProducts(@RequestParam String cipher, Model model) {
+//        List<Inventory> products = this.inventoryService.searchByCipher(cipher);
+//        model.addAttribute("deliveries", deliveryService.getDeliveriesForProducts(products));
+//        model.addAttribute("products", products);
+//
+//        return "listOfDeliveries";
+//    }
 }
