@@ -23,15 +23,15 @@ public class Inventory {
     private Long quantity;
 
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "productCipher", referencedColumnName = "cipher", insertable = false, updatable = false)
+    @JoinColumn(name = "alcoholCipher", referencedColumnName = "cipher", insertable = false, updatable = false)
     private Alcohol alcohol;
 
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "productCipher", referencedColumnName = "cipher", insertable = false, updatable = false)
+    @JoinColumn(name = "tobaccoCipher", referencedColumnName = "cipher", insertable = false, updatable = false)
     private Tobacco tobacco;
 
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "productCipher", referencedColumnName = "cipher", insertable = false, updatable = false)
+    @JoinColumn(name = "sodaCipher", referencedColumnName = "cipher", insertable = false, updatable = false)
     private Soda soda;
 
     public Alcohol getAlcohol() {
@@ -66,6 +66,14 @@ public class Inventory {
 
     public void setEntryId(Long entryId) {
         this.entryId = entryId;
+    }
+
+    public String getProductCipher() {
+        return productCipher;
+    }
+
+    public void setProductCipher(String productCipher) {
+        this.productCipher = productCipher;
     }
 
     public Long getQuantity() {

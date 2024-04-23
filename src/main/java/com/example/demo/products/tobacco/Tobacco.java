@@ -4,7 +4,6 @@ import jakarta.persistence.*;
 
 @Entity
 @Table
-@EntityListeners(TobaccoEntityListener.class)
 public class Tobacco {
     @Id
     @SequenceGenerator(
@@ -17,7 +16,6 @@ public class Tobacco {
             generator = "tobacco_sequence"
     )
     private Long productID;
-    @Column(unique = true)
     private String cipher;
     private String brand;
     private double price;

@@ -18,10 +18,11 @@ public class InventoryService {
         if (productCipher.startsWith("A")) {
             if (inventoryRepository.existsByAlcoholCipher(productCipher)) {
                 System.out.println("Alcohol exists in inventory");
-                inventoryRepository.updateAlcoholQuantity(productCipher, quantity);
+                inventoryRepository.updateQuantity(productCipher, quantity);
             } else {
                 System.out.println("Alcohol DOES NOT exist in inventory");
                 inventoryRepository.save(new Inventory(productCipher, quantity));
+                inventoryRepository.updateAlcoholCipherInInventory(productCipher);
             }
         }
     }

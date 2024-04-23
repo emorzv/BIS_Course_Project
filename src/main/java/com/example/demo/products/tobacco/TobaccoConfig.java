@@ -44,8 +44,16 @@ public class TobaccoConfig {
                     4,
                     "Light"
             );
+            Tobacco dsf = new Tobacco(
+                    "ABK",
+                    "Hoyo De Monterrey",
+                    30.0,
+                    "Tobacco",
+                    4,
+                    "Light"
+            );
             repository.saveAll(
-                    List.of(camel, winston, marlboro, luckyStrike)
+                    List.of(camel, winston, marlboro, luckyStrike, dsf)
             );
 
         };

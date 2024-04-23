@@ -19,6 +19,11 @@ public interface InventoryRepository extends JpaRepository<Inventory, Long> {
     List<Inventory> findByTobaccoCipherContaining(String partialCipher);
     List<Inventory> findBySodaCipherContaining(String partialCipher);
 
+    @Modifying
+    @Transactional
+    @Query("UPDATE Inventory i SET i.alcohol.cipher = :alcoholCipher WHERE i.productCipher = :alcoholCipher")
+    void updateAlcoholCipherInInventory(String alcoholCipher);
+
 //    @Modifying
 //    @Transactional
 //    @Query("update Inventory i set i.quantity = i.quantity + :newQuantity where i.productCipher = :productCipher")
@@ -30,7 +35,9 @@ public interface InventoryRepository extends JpaRepository<Inventory, Long> {
 //    void updateAlcoholQuantity(@Param("alcoholCipher") String alcoholCipher, @Param("newQuantity") Long newQuantity);
 
     @Modifying
-    @Query("UPDATE Inventory i SET i.quantity = :newQuantity WHERE i.alcohol.cipher = :cipher")
-    void updateAlcoholQuantity(@Param("cipher") String cipher, @Param("newQuantity") Long newQuantity);
+    @Transactional
+    @Query("update Inventory i set i.quantity = i.quantity + :newQuantity where i.productCipher = :cipher")
+
+    void updateQuantity(@Param("cipher") String cipher, @Param("newQuantity") Long newQuantity);
 
 }
