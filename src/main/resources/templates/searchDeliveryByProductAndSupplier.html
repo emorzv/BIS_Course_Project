@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search By Product and Supplier</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        form {
+            width: 300px;
+            margin: 0 auto;
+            text-align: center;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+        .top-bar {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            display: flex; /* Use flexbox for layout */
+            justify-content: space-between; /* Align items to the start and end of the flex container */
+            align-items: center; /* Center items vertically */
+        }
+
+        .top-bar .company-name {
+            flex-grow: 1; /* Allow the company name to grow and take up remaining space */
+            text-align: center; /* Align the company name to the left */
+        }
+
+        .top-bar button {
+            background-color: transparent;
+            border: none;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .top-bar button:hover {
+            color: #ccc;
+        }
+    </style>
+</head>
+<body>
+<div class="top-bar">
+    <button onclick="goToIndex()">Home</button> <!-- Button to return to index -->
+    <span class="company-name">Premium Alcohol and Tobacco</span> <!-- Company name -->
+</div>
+<h1>Search By Product Cipher</h1>
+<form th:action="@{/search/productAndSupplier}" method="GET">
+    <label for="productCipher">Enter Product Cipher:</label>
+    <input type="text" id="productCipher" name="productCipher" required>
+    <label for="supplierCipher">Enter Supplier Cipher:</label>
+    <input type="text" id="supplierCipher" name="supplierCipher" required>
+    <button type="submit">Search</button>
+</form>
+</body>
+<script>
+    function goToIndex() {
+        window.location.href = "/";
+    }
+</script>
+</html>

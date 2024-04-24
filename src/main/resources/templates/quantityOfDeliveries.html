@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alcohols</title>
+    <title>Total Quantity Delivered</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -70,12 +70,16 @@
     <span class="company-name">Premium Alcohol and Tobacco</span> <!-- Company name -->
 </div>
 
-<h1>List of Deliveries</h1>
+<h1>Total Quantity Delivered</h1>
 <ul id="deliveryList"></ul>
+
+<!-- Element to display total quantity for each supplier cipher -->
+<ul id="totalQuantities"></ul>
 
 <script th:inline="javascript">
     /*<![CDATA[*/
     var deliveries = /*[[${deliveries}]]*/ [];
+    var totalQuantities = {}; // Object to store total quantity for each supplier cipher
 
     deliveries.forEach(function(delivery) {
         var listItem = document.createElement('li');
@@ -83,6 +87,21 @@
                                 ', Product ID: ' + delivery.productCipher +
                                 ', Quantity: ' + delivery.quantity;
         document.getElementById('deliveryList').appendChild(listItem);
+
+        // Add the quantity of the current delivery to the total for the respective supplier cipher
+        if (!totalQuantities[delivery.supplierCipher]) {
+            totalQuantities[delivery.supplierCipher] = 0;
+        }
+        totalQuantities[delivery.supplierCipher] += delivery.quantity;
+    });
+
+    // Display the total quantity for each supplier cipher
+    var totalQuantitiesList = document.getElementById('totalQuantities');
+    Object.keys(totalQuantities).forEach(function(supplierCipher) {
+        var listItem = document.createElement('li');
+        listItem.textContent = 'Supplier ID: ' + supplierCipher +
+                                ', Total Quantity: ' + totalQuantities[supplierCipher];
+        totalQuantitiesList.appendChild(listItem);
     });
 
     function goToIndex() {
@@ -91,4 +110,5 @@
     /*]]>*/
 </script>
 </body>
+
 </html>

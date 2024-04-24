@@ -51,12 +51,29 @@ public class DeliveryController {
         deliveryService.deleteDelivery(deliveryId);
     }
 
-//    @GetMapping(path = "/search/deliveries")
-//    public String getDeliveriesForProducts(@RequestParam String cipher, Model model) {
-//        List<Inventory> products = this.inventoryService.searchByCipher(cipher);
-//        model.addAttribute("deliveries", deliveryService.getDeliveriesForProducts(products));
-//        model.addAttribute("products", products);
-//
-//        return "listOfDeliveries";
-//    }
+    @GetMapping(path = "/search/productAndSupplier")
+    public String getDeliveriesForProductsAndSupplier(@RequestParam String productCipher, @RequestParam String supplierCipher, Model model) {
+        List<Delivery> deliveries = this.deliveryService.searchByCipherAndSupplier(productCipher, supplierCipher);
+        model.addAttribute("deliveries", deliveries);
+
+        return "listOfDeliveries";
+    }
+
+    @GetMapping(path = "/search/deliveries")
+    public String getDeliveriesForProducts(@RequestParam String cipher, Model model) {
+        List<Delivery> deliveries = this.deliveryService.searchByCipher(cipher);
+        model.addAttribute("deliveries", deliveries);
+
+
+        return "listOfDeliveries";
+    }
+    @GetMapping(path= "/search/bySupplier")
+    public String getDeliveriesForSupplier(@RequestParam String cipher, Model model) {
+        List<Delivery> deliveries = this.deliveryService.searchBySupplier(cipher);
+        model.addAttribute("deliveries", deliveries);
+
+        return "quantityOfDeliveries";
+    }
+
+
 }

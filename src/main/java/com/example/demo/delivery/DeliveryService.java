@@ -44,6 +44,17 @@ public class DeliveryService {
 //        return allDeliveries;
 //    }
 
+    public List<Delivery> searchByCipher(String cipher) {
+        return deliveryRepository.findByProductCipherContaining(cipher);
+    }
+
+    public List<Delivery> searchByCipherAndSupplier(String productCipher, String supplierCipher) {
+        return deliveryRepository.findByProductCipherAndSupplierCipherContaining(productCipher, supplierCipher);
+    }
+
+    public List<Delivery> searchBySupplier(String supplierCipher) {
+        return deliveryRepository.findBySupplierCipherContaining(supplierCipher);
+    }
 
     // TODO: Delivery should specify the product type
 

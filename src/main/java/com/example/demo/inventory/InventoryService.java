@@ -27,6 +27,7 @@ public class InventoryService {
         }
     }
 
+
     public List<Inventory> searchByCipher(String cipher) {
         if (cipher.startsWith("A")) {
             return inventoryRepository.findByAlcoholCipherContaining(cipher);

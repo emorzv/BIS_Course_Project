@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search By Product Cipher</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa; /* Set background color */
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 30px;
+            color: #343a40; /* Set heading color */
+        }
+
+        form {
+            max-width: 400px; /* Set max width for the form */
+            margin: 0 auto; /* Center the form horizontally */
+            padding: 20px;
+            background-color: #fff; /* Set form background color */
+            border-radius: 8px; /* Add border radius */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add box shadow */
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            color: #495057; /* Set label color */
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ced4da; /* Set border color */
+            border-radius: 5px; /* Add border radius */
+        }
+
+        button[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff; /* Set button background color */
+            color: #fff; /* Set button text color */
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s; /* Add transition effect */
+        }
+
+        button[type="submit"]:hover {
+            background-color: #0056b3; /* Change button background color on hover */
+        }
+        .top-bar {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            display: flex; /* Use flexbox for layout */
+            justify-content: space-between; /* Align items to the start and end of the flex container */
+            align-items: center; /* Center items vertically */
+        }
+
+        .top-bar .company-name {
+            flex-grow: 1; /* Allow the company name to grow and take up remaining space */
+            text-align: center; /* Align the company name to the left */
+        }
+
+        .top-bar button {
+            background-color: transparent;
+            border: none;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .top-bar button:hover {
+            color: #ccc;
+        }
+    </style>
+</head>
+<body>
+<div class="top-bar">
+    <button onclick="goToIndex()">Home</button> <!-- Button to return to index -->
+    <span class="company-name">Premium Alcohol and Tobacco</span> <!-- Company name -->
+</div>
+<h1>Search By Product Cipher</h1>
+<form th:action="@{/search/bySupplier}" method="GET">
+    <label for="cipher">Enter Product Cipher:</label>
+    <input type="text" id="cipher" name="cipher" required>
+    <button type="submit">Search</button>
+</form>
+</body>
+<script>
+    function goToIndex() {
+        window.location.href = "/";
+    }
+</script>
+</html>

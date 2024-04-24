@@ -27,4 +27,9 @@ public class WebController {
     public String deliveryConfirmation() {
         return "deliveryConfirmation";
     }
+
+    @RequestMapping(value = "/searchDeliveryByProductAndSupplier")
+    public String searchDeliveryByProductAndSupplier() {
+        return "searchDeliveryByProductAndSupplier";
+    }
 }

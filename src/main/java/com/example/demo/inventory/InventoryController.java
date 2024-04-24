@@ -23,4 +23,6 @@ public class InventoryController {
         model.addAttribute("inventory", inventoryList);
         return "inventory";
     }
+
+
 }
