@@ -1,5 +1,6 @@
 package com.example.demo.delivery;
 
+import com.example.demo.DemoApplication;
 import com.example.demo.inventory.Inventory;
 import com.example.demo.inventory.InventoryService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -73,6 +74,21 @@ public class DeliveryController {
         model.addAttribute("deliveries", deliveries);
 
         return "quantityOfDeliveries";
+    }
+
+    @GetMapping(path = "/search/byProductName")
+    public String getDeliveriesByProductName(@RequestParam String brand, Model model) {
+        List<Delivery> deliveries = this.deliveryService.searchByProductName(brand);
+        model.addAttribute("deliveries", deliveries);
+
+        return "listOfSuppliers";
+    }
+
+    @GetMapping(path = "/search/productAndSupplierQuantity")
+    public String getProductsAndSupplierQuantity(@RequestParam String productCipher, @RequestParam String supplierCipher, Model model) {
+        Delivery delivery = this.deliveryService.getQuantity(productCipher, supplierCipher);
+        model.addAttribute("delivery", delivery);
+        return "quantityCalculation";
     }
 
 

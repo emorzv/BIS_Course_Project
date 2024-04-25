@@ -32,4 +32,9 @@ public class WebController {
     public String searchDeliveryByProductAndSupplier() {
         return "searchDeliveryByProductAndSupplier";
     }
+
+    @RequestMapping(value = "/searchSupplierByProductName")
+    public String searchSupplierByProductName() {
+        return "searchSupplierByProductName";
+    }
 }

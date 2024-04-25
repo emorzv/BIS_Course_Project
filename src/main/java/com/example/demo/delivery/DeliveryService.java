@@ -2,21 +2,27 @@ package com.example.demo.delivery;
 
 import com.example.demo.inventory.InventoryService;
 import com.example.demo.products.alcohol.Alcohol;
-import com.example.demo.general.ProductType;
-import com.example.demo.products.tobacco.Tobacco;
+import com.example.demo.products.alcohol.AlcoholRepository;
+import com.example.demo.products.soda.SodaRepository;
+import com.example.demo.products.tobacco.TobaccoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
 public class DeliveryService {
     private final DeliveryRepository deliveryRepository;
+    private final AlcoholRepository alcoholRepository;
+    private final TobaccoRepository tobaccoRepository;
+    private final SodaRepository sodaRepository;
     private final InventoryService inventoryService;
     @Autowired
-    public DeliveryService(DeliveryRepository deliveryRepository, InventoryService inventoryService) {
+    public DeliveryService(DeliveryRepository deliveryRepository, AlcoholRepository alcoholRepository, TobaccoRepository tobaccoRepository, SodaRepository sodaRepository, InventoryService inventoryService) {
         this.deliveryRepository = deliveryRepository;
+        this.alcoholRepository = alcoholRepository;
+        this.tobaccoRepository = tobaccoRepository;
+        this.sodaRepository = sodaRepository;
         this.inventoryService = inventoryService;
     }
 
@@ -73,5 +79,24 @@ public class DeliveryService {
             return false;
         }
         return true;
+    }
+
+    public List<Delivery> searchByProductName(String brand) {
+        String cipher;
+        if (!(cipher = alcoholRepository.findByBrand(brand).getCipher()).isEmpty()
+                || !(cipher = tobaccoRepository.findByBrand(brand).getCipher()).isEmpty()
+                || !(cipher = sodaRepository.findByBrand(brand).getCipher()).isEmpty()) {
+            return deliveryRepository.findByProductCipher(cipher);
+        }
+        return null;
+    }
+
+    public Delivery getQuantity(String productCipher, String supplierCipher) {
+        List<Delivery> deliveries = searchByCipherAndSupplier(productCipher, supplierCipher);
+        Long quantity = 0L;
+        for (Delivery delivery : deliveries) {
+            quantity += delivery.getQuantity();
+        }
+        return new Delivery(supplierCipher, productCipher, quantity);
     }
 }
