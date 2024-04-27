@@ -22,28 +22,25 @@ public class Soda {
     private String brand;
     private double price;
     private String description;
-    private int supplierID;
     private double volume;
 
     public Soda() {
     }
 
-    public Soda(Long productID, String cipher, String brand, double price, String description, int supplierID, double volume) {
+    public Soda(Long productID, String cipher, String brand, double price, String description, double volume) {
         this.productID = productID;
         this.cipher = cipher;
         this.brand = brand;
         this.price = price;
         this.description = description;
-        this.supplierID = supplierID;
         this.volume = volume;
     }
 
-    public Soda(String cipher, String brand, double price, String description, int supplierID, double volume) {
+    public Soda(String cipher, String brand, double price, String description, double volume) {
         this.cipher = cipher;
         this.brand = brand;
         this.price = price;
         this.description = description;
-        this.supplierID = supplierID;
         this.volume = volume;
     }
 
@@ -93,14 +90,6 @@ public class Soda {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public int getSupplierID() {
-        return supplierID;
-    }
-
-    public void setSupplierID(int supplierID) {
-        this.supplierID = supplierID;
     }
 
 }

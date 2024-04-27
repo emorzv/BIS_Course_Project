@@ -25,14 +25,38 @@ public class InventoryService {
                 inventoryRepository.updateAlcoholCipherInInventory(productCipher);
             }
         }
+        else if (productCipher.startsWith("T")) {
+            if (inventoryRepository.existsByTobaccoCipher(productCipher)) {
+                System.out.println("Tobacco exists in inventory");
+                inventoryRepository.updateQuantity(productCipher, quantity);
+            } else {
+                System.out.println("Tobacco DOES NOT exist in inventory");
+                inventoryRepository.save(new Inventory(productCipher, quantity));
+                inventoryRepository.updateTobaccoCipherInInventory(productCipher);
+            }
+        }
+        else if (productCipher.startsWith("S")) {
+            if (inventoryRepository.existsBySodaCipher(productCipher)) {
+                System.out.println("Soda exists in inventory");
+                inventoryRepository.updateQuantity(productCipher, quantity);
+            } else {
+                System.out.println("Soda DOES NOT exist in inventory");
+                inventoryRepository.save(new Inventory(productCipher, quantity));
+                inventoryRepository.updateSodaCipherInInventory(productCipher);
+            }
+        }
     }
 
 
     public List<Inventory> searchByCipher(String cipher) {
         if (cipher.startsWith("A")) {
             return inventoryRepository.findByAlcoholCipherContaining(cipher);
-        } else
-            return inventoryRepository.findByAlcoholCipherContaining(cipher);
+        } else if (cipher.startsWith("T")) {
+            return inventoryRepository.findByTobaccoCipherContaining(cipher);
+        } else if (cipher.startsWith("S")) {
+            return inventoryRepository.findBySodaCipherContaining(cipher);
+        }
+        return null;
     }
 
     public boolean productAvailable(String productCipher, Long quantity) {

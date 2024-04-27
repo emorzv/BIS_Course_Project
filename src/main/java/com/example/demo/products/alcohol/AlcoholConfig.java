@@ -16,7 +16,6 @@ public class AlcoholConfig {
                     "Heineken",
                     2.5,
                     "Beer",
-                    "DAB",
                     0.7
                     );
 
@@ -25,7 +24,6 @@ public class AlcoholConfig {
                     "Ariana",
                     2.0,
                     "Beer Light",
-                    "DAB",
                     0.5
             );
             Alcohol ABP = new Alcohol(
@@ -33,7 +31,6 @@ public class AlcoholConfig {
                     "Pirinsko",
                     2.0,
                     "Beer Light",
-                    "DAB",
                     0.5
             );
             Alcohol ABT = new Alcohol(
@@ -41,7 +38,6 @@ public class AlcoholConfig {
                     "Tuborg",
                     2.0,
                     "Beer Light",
-                    "DAB",
                     0.5
             );
             Alcohol ABK = new Alcohol(
@@ -49,7 +45,6 @@ public class AlcoholConfig {
                     "Kamenitza",
                     2.0,
                     "Beer Light",
-                    "DAB",
                     0.5
             );
 
@@ -58,7 +53,6 @@ public class AlcoholConfig {
                     "Bratanov",
                     30.0,
                     "Wine Red",
-                    "DAE",
                     3.0
             );
             Alcohol AWE = new Alcohol(
@@ -66,7 +60,6 @@ public class AlcoholConfig {
                     "Bratanov",
                     30.0,
                     "Wine Red",
-                    "DAE",
                     3.0
             );
             Alcohol AWW = new Alcohol(
@@ -74,7 +67,6 @@ public class AlcoholConfig {
                     "Bratanov",
                     30.0,
                     "Wine Red",
-                    "DAE",
                     3.0
             );
 
@@ -83,7 +75,6 @@ public class AlcoholConfig {
                     "JohnyWalker",
                     30.0,
                     "Wine Red",
-                    "DAW",
                     1.0
             );
             Alcohol AHWD = new Alcohol(
@@ -91,7 +82,6 @@ public class AlcoholConfig {
                     "JackDaniels",
                     30.0,
                     "Wine Red",
-                    "DAW",
                     1.0
             );
             Alcohol AHWB = new Alcohol(
@@ -99,7 +89,6 @@ public class AlcoholConfig {
                     "JimBeam",
                     30.0,
                     "Wine Red",
-                    "DAW",
                     1.0
             );
 
@@ -108,7 +97,6 @@ public class AlcoholConfig {
                     "Beluga",
                     30.0,
                     "Wine Red",
-                    "DAV",
                     1.0
             );
             Alcohol AHVG = new Alcohol(
@@ -116,7 +104,6 @@ public class AlcoholConfig {
                     "Goose",
                     30.0,
                     "Wine Red",
-                    "DAV",
                     1.0
             );
             Alcohol AHVC = new Alcohol(
@@ -124,7 +111,6 @@ public class AlcoholConfig {
                     "Ciroc",
                     30.0,
                     "Wine Red",
-                    "DAV",
                     1.0
             );
             repository.saveAll(

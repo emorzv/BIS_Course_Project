@@ -3,7 +3,9 @@ package com.example.demo.delivery;
 import com.example.demo.inventory.InventoryService;
 import com.example.demo.products.alcohol.Alcohol;
 import com.example.demo.products.alcohol.AlcoholRepository;
+import com.example.demo.products.soda.Soda;
 import com.example.demo.products.soda.SodaRepository;
+import com.example.demo.products.tobacco.Tobacco;
 import com.example.demo.products.tobacco.TobaccoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -81,10 +83,25 @@ public class DeliveryService {
     }
 
     public List<Delivery> searchByProductName(String brand) {
-        String cipher;
-        if (!(cipher = alcoholRepository.findByBrand(brand).getCipher()).isEmpty()
-                || !(cipher = tobaccoRepository.findByBrand(brand).getCipher()).isEmpty()
-                || !(cipher = sodaRepository.findByBrand(brand).getCipher()).isEmpty()) {
+        // Find alcohol, tobacco, and soda once
+        Alcohol alcohol = alcoholRepository.findByBrand(brand);
+        Tobacco tobacco = tobaccoRepository.findByBrand(brand);
+        Soda soda = sodaRepository.findByBrand(brand);
+
+// Check if any of them exist and have a non-empty cipher
+        if ((alcohol != null && !alcohol.getCipher().isEmpty())
+                || (tobacco != null && !tobacco.getCipher().isEmpty())
+                || (soda != null && !soda.getCipher().isEmpty())) {
+            // Determine the cipher
+            String cipher = "";
+            if (alcohol != null && !alcohol.getCipher().isEmpty()) {
+                cipher = alcohol.getCipher();
+            } else if (tobacco != null && !tobacco.getCipher().isEmpty()) {
+                cipher = tobacco.getCipher();
+            } else {
+                cipher = soda.getCipher();
+            }
+            // Return delivery by product cipher
             return deliveryRepository.findByProductCipher(cipher);
         }
         return null;

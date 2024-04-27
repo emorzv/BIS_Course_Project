@@ -20,25 +20,22 @@ public class Tobacco {
     private String brand;
     private double price;
     private String description;
-    private int supplierID;
     private String type;
 
-    public Tobacco(Long productID, String cipher, String brand, double price, String description, int supplierID, String type) {
+    public Tobacco(Long productID, String cipher, String brand, double price, String description, String type) {
         this.productID = productID;
         this.cipher = cipher;
         this.brand = brand;
         this.price = price;
         this.description = description;
-        this.supplierID = supplierID;
         this.type = type;
     }
 
-    public Tobacco(String cipher, String brand, double price, String description, int supplierID, String type) {
+    public Tobacco(String cipher, String brand, double price, String description, String type) {
         this.cipher = cipher;
         this.brand = brand;
         this.price = price;
         this.description = description;
-        this.supplierID = supplierID;
         this.type = type;
     }
 
@@ -83,14 +80,6 @@ public class Tobacco {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public int getSupplierID() {
-        return supplierID;
-    }
-
-    public void setSupplierID(int supplierID) {
-        this.supplierID = supplierID;
     }
 
     public String getType() {

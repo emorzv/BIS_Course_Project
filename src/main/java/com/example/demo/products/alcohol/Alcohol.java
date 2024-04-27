@@ -23,7 +23,6 @@ public class Alcohol {
     private String brand;
     private double price;
     private String description;
-    private String supplierCipher;
     private double volume;
 
     @OneToOne(cascade = ALL, mappedBy="alcohol")
@@ -34,22 +33,20 @@ public class Alcohol {
     public Alcohol() {
     }
 
-    public Alcohol(Long productID, String cipher, String brand, double price, String description, String supplierCipher, double volume) {
+    public Alcohol(Long productID, String cipher, String brand, double price, String description, double volume) {
         this.productID = productID;
         this.cipher = cipher;
         this.brand = brand;
         this.price = price;
         this.description = description;
-        this.supplierCipher = supplierCipher;
         this.volume = volume;
     }
 
-    public Alcohol(String cipher, String brand, double price, String description, String supplierCipher, double volume) {
+    public Alcohol(String cipher, String brand, double price, String description, double volume) {
         this.cipher = cipher;
         this.brand = brand;
         this.price = price;
         this.description = description;
-        this.supplierCipher = supplierCipher;
         this.volume = volume;
     }
 
@@ -100,11 +97,4 @@ public class Alcohol {
         this.description = description;
     }
 
-    public String getSupplierCipher() {
-        return supplierCipher;
-    }
-
-    public void setSupplierCipher(String supplierCipher) {
-        this.supplierCipher = supplierCipher;
-    }
 }

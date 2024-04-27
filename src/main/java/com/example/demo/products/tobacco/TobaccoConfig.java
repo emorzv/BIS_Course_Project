@@ -12,48 +12,53 @@ public class TobaccoConfig {
     CommandLineRunner commandLineRunnerTobacco(TobaccoRepository repository) {
         return args -> {
             Tobacco camel = new Tobacco(
-                    "TC1",
+                    "TCC",
                     "Camel",
                     2.0,
                     "Tobacco",
-                    1,
                     "Slim"
             );
 
             Tobacco winston = new Tobacco(
-                    "TC0",
+                    "TCW",
                     "Winston",
                     3.0,
                     "Tobacco",
-                    2,
                     "Regular"
             );
             Tobacco marlboro = new Tobacco(
-                    "TC0",
+                    "TCM",
                     "Marlboro",
                     4.0,
                     "Tobacco",
-                    3,
                     "Regular"
             );
-            Tobacco luckyStrike = new Tobacco(
-                    "TP0",
+            Tobacco hoyoDeMonterrey = new Tobacco(
+                    "TPH",
                     "Hoyo De Monterrey",
                     30.0,
                     "Tobacco",
-                    4,
                     "Light"
             );
-            Tobacco dsf = new Tobacco(
-                    "ABK",
-                    "Hoyo De Monterrey",
+            Tobacco cohiba = new Tobacco(
+                    "TPC",
+                    "Cohiba",
                     30.0,
                     "Tobacco",
-                    4,
-                    "Light"
+                    "Strong"
             );
+
+            Tobacco davidoff = new Tobacco(
+                    "TPD",
+                    "Davidoff",
+                    30.0,
+                    "Tobacco",
+                    "Strong"
+            );
+
+
             repository.saveAll(
-                    List.of(camel, winston, marlboro, luckyStrike, dsf)
+                    List.of(camel, winston, marlboro, hoyoDeMonterrey, cohiba, davidoff)
             );
 
         };
