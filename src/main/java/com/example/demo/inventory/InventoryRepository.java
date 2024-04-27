@@ -40,4 +40,18 @@ public interface InventoryRepository extends JpaRepository<Inventory, Long> {
 
     void updateQuantity(@Param("cipher") String cipher, @Param("newQuantity") Long newQuantity);
 
+    @Modifying
+    @Transactional
+    @Query("update Inventory i set i.quantity = i.quantity - :newQuantity where i.productCipher = :cipher")
+    void updateQuantitySubtract(@Param("cipher") String cipher, @Param("newQuantity") Long newQuantity);
+
+
+    @Query("SELECT alcohol.price FROM Inventory INNER JOIN alcohol ON :cipher = alcohol.cipher")
+    double getPriceByAlcoholCipher(@Param("cipher") String cipher);
+
+    @Query("SELECT tobacco.price FROM Inventory INNER JOIN tobacco ON :cipher = tobacco.cipher")
+    double getPriceByTobaccoCipher(@Param("cipher") String productCipher);
+
+    @Query("SELECT soda.price FROM Inventory INNER JOIN soda ON :cipher = soda.cipher")
+    double getPriceBySodaCipher(@Param("cipher") String productCipher);
 }

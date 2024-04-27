@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
+import java.util.Map;
 
 @Controller
 public class DeliveryController {
@@ -91,5 +92,10 @@ public class DeliveryController {
         return "quantityCalculation";
     }
 
-
+    @GetMapping(path = "/search/mostDelivered")
+    public String getMostDelivered(@RequestParam String cipher, Model model) {
+        Map<String, Long> map = this.deliveryService.getMostDelivered(cipher);
+        model.addAttribute("myMap", map);
+        return "mostDeliveries";
+    }
 }

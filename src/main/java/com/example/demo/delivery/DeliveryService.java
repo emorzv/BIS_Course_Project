@@ -8,7 +8,8 @@ import com.example.demo.products.tobacco.TobaccoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
 
 @Service
 public class DeliveryService {
@@ -75,9 +76,7 @@ public class DeliveryService {
 
         inventoryService.newDelivery(productCipher, quantity);
 
-        if (deliveryRepository.save(delivery) == null) {
-            return false;
-        }
+        deliveryRepository.save(delivery);
         return true;
     }
 
@@ -98,5 +97,47 @@ public class DeliveryService {
             quantity += delivery.getQuantity();
         }
         return new Delivery(supplierCipher, productCipher, quantity);
+    }
+
+    public Map<String, Long> getMostDelivered(String supplierCipher) {
+        List<Delivery> deliveries = deliveryRepository.findBySupplierCipherContaining(supplierCipher);
+        Map<String, Long> entries = new HashMap<>();
+
+        for (Delivery delivery : deliveries) {
+            if (entries.containsKey(delivery.getProductCipher())) {
+                entries.put(delivery.getProductCipher(), entries.get(delivery.getProductCipher()) + delivery.getQuantity());
+            } else {
+                entries.put(delivery.getProductCipher(), delivery.getQuantity());
+            }
+        }
+
+        return sortByValue(entries, false);
+    }
+
+    private static Map<String, Long> sortByValue(Map<String, Long> unsortedMap, final boolean ascending) {
+        List<Map.Entry<String, Long>> list = new LinkedList<>(unsortedMap.entrySet());
+
+        // Sorting the list based on values
+        list.sort((o1, o2) -> ascending ? o1.getValue().compareTo(o2.getValue()) == 0
+                ? o1.getKey().compareTo(o2.getKey())
+                : o1.getValue().compareTo(o2.getValue()) : o2.getValue().compareTo(o1.getValue()) == 0
+                ? o2.getKey().compareTo(o1.getKey())
+                : o2.getValue().compareTo(o1.getValue()));
+        return list.stream().collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (a, b) -> b, LinkedHashMap::new));
+
+    }
+
+    public double deliveryExpenses() {
+        List<Delivery> deliveries = deliveryRepository.findAll();
+
+        double total = 0;
+        for (Delivery delivery : deliveries) {
+            String productCipher = delivery.getProductCipher();
+
+            double priceForCipher = inventoryService.getPriceByCipher(productCipher);
+
+            total += (priceForCipher*delivery.getQuantity());
+        }
+        return total;
     }
 }

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Financial Data</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif; /* Setting a fallback font for better cross-browser consistency */
+            margin: 0; /* Remove default margin */
+            padding: 0; /* Remove default padding */
+        }
+        .top-bar {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            display: flex; /* Use flexbox for layout */
+            justify-content: space-between; /* Align items to the start and end of the flex container */
+            align-items: center; /* Center items vertically */
+        }
+
+        .top-bar .company-name {
+            flex-grow: 1; /* Allow the company name to grow and take up remaining space */
+            text-align: center; /* Align the company name to the left */
+        }
+        h1 {
+            text-align: center; /* Center align the heading */
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-top: 20px; /* Add margin to the top of the table */
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .top-bar button {
+            background-color: transparent;
+            border: none;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 10px; /* Add padding to table cells */
+            border-bottom: 1px solid #ddd; /* Add bottom border for table rows */
+            text-align: center; /* Center align text in cells */
+        }
+        th {
+            background-color: #f2f2f2; /* Set background color for table header */
+            color: #333; /* Set text color for table header */
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9; /* Set background color for even rows */
+        }
+
+        .top-bar button:hover {
+            color: #ccc;
+        }
+    </style>
+</head>
+<body>
+
+<div class="top-bar">
+    <button onclick="goToIndex()">Home</button> <!-- Button to return to index -->
+    <span class="company-name">Premium Alcohol and Tobacco</span> <!-- Company name -->
+</div>
+<table>
+    <tr>
+        <th>Sales Profit</th>
+        <th>Deliveries Expenses</th>
+    </tr>
+    <tr>
+        <td th:text="${salesProfit}"></td>
+        <td th:text="${deliveriesExpenses}"></td>
+    </tr>
+</table>
+
+<script>
+    // Function to handle navigating to the home page (replace with your actual function)
+    function goToIndex() {
+        window.location.href = "/";
+    }
+</script>
+
+</body>
+</html>

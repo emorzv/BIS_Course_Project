@@ -34,4 +34,37 @@ public class InventoryService {
         } else
             return inventoryRepository.findByAlcoholCipherContaining(cipher);
     }
+
+    public boolean productAvailable(String productCipher, Long quantity) {
+        List<Inventory> inventory = null;
+        if (productCipher.startsWith("A")) {
+            inventory = inventoryRepository.findByAlcoholCipherContaining(productCipher);
+        } else if (productCipher.startsWith("T")) {
+            inventory = inventoryRepository.findByTobaccoCipherContaining(productCipher);
+        } else if (productCipher.startsWith("S")) {
+            inventory = inventoryRepository.findBySodaCipherContaining(productCipher);
+        }
+
+        assert inventory != null;
+        if (!inventory.isEmpty()) {
+            if (inventory.get(0).getQuantity() >= quantity) {
+                inventoryRepository.updateQuantitySubtract(productCipher, quantity);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public double getPriceByCipher(String productCipher) {
+        double inventory = 0;
+        if (productCipher.startsWith("A")) {
+            inventory = inventoryRepository.getPriceByAlcoholCipher(productCipher);
+        } else if (productCipher.startsWith("T")) {
+            inventory = inventoryRepository.getPriceByTobaccoCipher(productCipher);
+        } else if (productCipher.startsWith("S")) {
+            inventory = inventoryRepository.getPriceBySodaCipher(productCipher);
+        }
+
+        return inventory;
+    }
 }
